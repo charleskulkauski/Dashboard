@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando ChartJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="./icon-user.png" alt="" class="icones" style="float:left">
+            <div class="posicao-config-sair">
+                <img src="./icon-settings.png" alt="" class="icones">
+                <img src="./icon-exit.png" alt="" class="icones">
+            </div>
+        </div>
+    </div>
+    <div class="container02">
+        <span>Bom dia, usuário!</span>
+        <div class="box-grafico">
+            <div class="grafico">
+                <canvas id="graficoLinha"></canvas><!--Aonde desenhamos o gráfico-->
+            </div>
+            <div class="box-situacao-alerta">
+                <div class="situacao"></div>
+                <div class="alerta"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container02">
+        <div class="box-grafico">
+            <div class="box-situacao-alerta">
+                <div class="situacao"></div>
+                <div class="alerta"></div>
+            </div>
+            <div class="grafico">
+                <canvas id="graficoBarra"></canvas><!--Aonde desenhamos o gráfico-->
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    //Vetor para fazer as dimensões
+    const horas = [
+      '12:00',
+      '13:00',
+      '14:00',
+      '15:00',
+      '16:00',
+      '17:00',
+    ];
+  
+    //Dados JSON em vetores
+    const temperaturaUmidade = {
+      labels: horas,
+      datasets: [{
+        //Título do gráfico
+        label: 'Temperatura',
+        //Cores da linha
+        backgroundColor: 'rgb(255,213,128)',
+        borderColor: 'rgb(255,213,128)',
+        //Dados do gráfico
+        data: [23, 22, 25, 28, 29, 30],
+      },
+      {
+        label: 'Umidade',
+        backgroundColor: 'rgb(128,170,255)',
+        borderColor: 'rgb(128,170,255)',
+        data: [82, 88, 87, 93, 89, 90],
+      }
+    ]
+    };
+
+    const meses = [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+    ];
+
+    const temperaturaUmidadeBarra = {
+      labels: meses,
+      datasets: [{
+        //Título do gráfico
+        label: 'Temperatura',
+        //Cores da linha
+        backgroundColor: 'rgb(255,213,128)',
+        borderColor: 'rgb(255,213,128)',
+        //Dados do gráfico
+        data: [18, 20, 23, 27, 24, 22],
+      },
+      {
+        label: 'Umidade',
+        backgroundColor: 'rgb(128,170,255)',
+        borderColor: 'rgb(128,170,255)',
+        data: [82, 88, 87, 93, 89, 90],
+      }
+    ]
+    };
+  
+    const config = {
+      type: 'line',
+      data: temperaturaUmidade,
+      options: {}
+    };
+
+    const config2 = {
+      type: 'bar',
+      data: temperaturaUmidadeBarra,
+      options: {}
+    };
+  </script>
+  <script>
+    //Cria o gráfico lá na tag do canvas no 'MyChart'
+    //Sempre quecriar um gráfico tem que adicionar outra const com as informações adequadas
+    const graficoLInha = new Chart(
+      document.getElementById('graficoLinha'),
+      //Aqui pega as configurações da const config
+      config
+    );
+
+    const graficoBarra = new Chart(
+      document.getElementById('graficoBarra'),
+      //Aqui pega as configurações da const config
+      config
+    );
+  </script>
+  
+  
