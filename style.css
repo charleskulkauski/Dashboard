@@ -9,8 +9,6 @@ body{
 .header{
     background-color: #753a22;
     color:white;
-
-
 }
 
 .container{
@@ -64,10 +62,12 @@ body{
     justify-content:space-around;
 }
 .grafico{
+    display:flex;
+    align-items: center;
     background-color: #fbf8f9;
     border: 2px solid #753a22;
     border-radius:40px;
-    padding:10px;
+    padding:25px;
     width:744px;
     height:404px;
 }
